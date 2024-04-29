@@ -175,7 +175,7 @@ margin: 0 auto; /* This centers the container horizontally */
     margin-top: 5rem;
   }
   .card {
-    width: 50%;
+    width: 500px;
   }
 }
 
