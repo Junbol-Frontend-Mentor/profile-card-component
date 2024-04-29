@@ -25,8 +25,8 @@ This is a solution to the [Profile card component challenge on Frontend Mentor](
 
 ### Links
 
-- Solution URL: (https://github.com/Junbol-Frontend-Mentor/testimonials-grid)
-- Live Site URL: (https://junbol-frontend-mentor.github.io/testimonials-grid/)
+- Solution URL: (https://github.com/Junbol-Frontend-Mentor/profile-card-component)
+- Live Site URL: (https://junbol-frontend-mentor.github.io/profile-card-component/)
 
 ## My process
 
@@ -45,54 +45,18 @@ This is a solution to the [Profile card component challenge on Frontend Mentor](
 Working with SCSS Grid & MediaQueries
 
 ```
+.container {
+  flex: 1 0 auto;
 
-@media (min-width: 768px) {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); // Creates 4 equal columns
-    grid-gap: 20px; // Adjusting the gap between grid items
-    align-items: start; // Aligns items to the start of their cell
-    grid-auto-rows: minmax(250px, auto); // Ensures that rows are at least 250px tall
-    grid-gap: 20px; // Maintains a fixed gap
-    width: 80%;
-    padding: 20px;
-    margin-top: 30px;
-    align-items: stretch; // Stretches items to fill the grid row height
-  }
-  .card {
-    min-height: 300px; // Sets a minimum height and allows expansion based on content
-    margin: 0rem;
-  }
-  // Card 1 (Daniel) takes the first row and spans two columns
-  .card:nth-child(1) {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-  }
-
-  // Card 2 (Jonathan) is placed in the first row, third column
-  .card:nth-child(2) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  // Card 3 (Jeanette) takes the second row, first column
-  .card:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  // Card 4 (Patrick) starts at the second column and spans two columns in the second row
-  .card:nth-child(4) {
-    grid-column: 2 / span 2;
-    grid-row: 2;
-  }
-
-  // Card 5 (Kira) occupies the entire fourth column, and should align with Card 2's top
-  .card:nth-child(5) {
-    grid-column: 4;
-    grid-row: 1 / span 2;
-  }
+  margin: 0 auto; /* This centers the container horizontally */
 }
+
+
+ &:hover {
+      // Correct hover syntax using &
+      transform: rotate(360deg); /* Completes a full circle */
+    }
+
 ```
 
 ### Continued development
