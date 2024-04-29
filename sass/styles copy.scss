@@ -39,14 +39,19 @@ $colors: (
 // Base styles
 html,
 body {
-  height: 95vh; /* This ensures that the body takes the full viewport height. The only way to be centered vertically is to use this */
+  height: 95vh; /* This ensures that the body takes the full viewport height.The only way to centered vertically is to use this */
   background-image: url(../assets/images/bg-pattern-card.svg);
   background-repeat: no-repeat;
   background-size: 700%; /* enlarges the image by 25% */
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
   background-color: color('light-grayish-blue');
+
+  // background-color: aqua; // for testing
 }
 
 // Container styles for mobiles
@@ -56,32 +61,36 @@ body {
   flex-direction: column;
   align-items: center; /* This centers the children of .mainContainer horizontally along the cross axis */
   width: 100%;
-  height: 70vh; /* This ensures that the body takes the full viewport height. The only way to be centered vertically is to use this */
+  height: 70vh; /* This ensures that the body takes the full viewport height.The only way to centered vertically is to use this 
   margin: 0 auto; /* This centers the container horizontally */
   padding: 1rem;
   margin-bottom: 2rem;
+  align-items: center;
+  // background-color: blueviolet;
 }
 
-// Card styling with BEM applied
+// Card styling with nested classes for author section , colors and typography
 .card {
   width: 100%;
   height: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* This allows for absolute positioning inside */
+  position: relative; // This allows for absolute positioning inside*/
   border-radius: 15px;
   margin-bottom: 2rem;
   transition: transform 0.5s;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0 0 0 / 40%);
   background-color: color('white');
+  // background-color: brown;
 
   &:hover {
-    transform: scale(1.05); /* Scales the card by 5% on hover */
+    // Correct hover syntax using &
+    transform: scale(1.05); // Scales the card by 5% on hover
   }
 
-  &__bgTopImage {
+  .bgTopImage {
     border-radius: 10px;
     background-image: url(../assets/images/bg-pattern-card.svg);
     opacity: 0.7; /* Set the opacity to your desired level, e.g., 50% */
@@ -89,18 +98,19 @@ body {
     width: 100%;
     height: 42%;
     background-position: center;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 0px 0px;
     background-size: cover;
     margin-bottom: 1.5rem;
   }
-
-  &__bgPhoto {
+  <span class="card__img"></span>
+  // Define common styles for .photo under .author to ensure specificity
+  .bgPhoto {
     background-image: url(../assets/images/image-victor.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 7rem;
     height: 7rem;
-    border-radius: 50%; /* Ensures the image is round */
+    border-radius: 50%; // Ensures the image is round
     position: absolute;
     margin-top: 150px;
     transition: transform 1s ease; /* Adjust timing and easing to taste */
@@ -108,11 +118,12 @@ body {
     border: 5px solid color('white');
 
     &:hover {
+      // Correct hover syntax using &
       transform: rotate(360deg); /* Completes a full circle */
     }
   }
 
-  &__heading {
+  .heading {
     margin-top: 3rem;
     width: 100%;
     height: 80px;
@@ -121,9 +132,23 @@ body {
     align-items: center;
     border-bottom: 1px solid lightgray;
     padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    // background-color: red;
   }
 
-  &__socialData {
+  .title {
+    @include typography(700, 1.2rem, 1.5, color('dark-saturated-blue'));
+  }
+
+  span {
+    @include typography(700, 1.2rem, 1.5, color('dark-grayish-blue'));
+  }
+
+  .city {
+    @include typography(100, 1rem, 1.5, color('dark-grayish-blue'));
+  }
+
+  .socialData {
     width: 100%;
     height: 4rem;
     display: flex;
@@ -133,53 +158,35 @@ body {
     // background-color: chocolate;
   }
 
-  &__data {
+  .data {
     width: 100%;
     height: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // background-color: crimson;
   }
 
-  &__title h3:hover {
-    color: color('dark-cyan');
-  }
-
-  &__data h1:hover {
-    color: color('dark-cyan');
-  }
-
-  &__title,
-  &__data h1,
-  &__data {
+  h1 {
     @include typography(700, 1.2rem, 1.5, color('dark-saturated-blue'));
   }
-  &__data h4 {
-    @include typography(400, 0.8rem, 1.5, color('dark-grayish-blue'));
-  }
 
-  &__city {
-    @include typography(100, 1rem, 1.5, color('dark-grayish-blue'));
-  }
-
-  &__span {
-    @include typography(700, 1.2rem, 1.5, color('dark-grayish-blue'));
+  h4 {
+    @include typography(400, 0.9rem, 1.5, color('dark-grayish-blue'));
   }
 }
 
 .attribution {
   text-align: center;
   margin-bottom: 2rem; /* Keeps the footer at the bottom but only after all other content */
-  color: hsl(228, 45%, 44%);
-  a {
-    color: white;
-    text-decoration: none;
-  }
+}
+.attribution a {
+  color: white;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
+  // Container styles for mobiles
   .container {
     margin-top: 5rem;
   }

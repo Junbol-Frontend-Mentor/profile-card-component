@@ -35,6 +35,7 @@ This is a solution to the [Profile card component challenge on Frontend Mentor](
 - Semantic HTML5 markup
 - CSS custom properties
 - Sass(SCSS)
+- BEM (Block.Element.Modifier)
 - Flexbox
 - Mobile-first workflow
 - GIT/GitHub
@@ -56,6 +57,7 @@ Working with SCSS Grid & MediaQueries
       // Correct hover syntax using &
       transform: rotate(360deg); /* Completes a full circle */
     }
+Sass(SCSS)  +   BEM (Block.Element.Modifier)
 
 ```
 
