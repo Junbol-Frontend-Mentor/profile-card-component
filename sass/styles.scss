@@ -1,242 +1,198 @@
 // Importing Google Fonts
-@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;400;700&display=swap');
 
 //------GENERAL SETTINGS -------------------------------
 
-// Universal reset also explicitly to all pseudo-elements 
+// Universal reset also explicitly to all pseudo-elements
 *,
 *::before,
 *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 
 // Define color variables
 $colors: (
-  'moderate-violet': hsl(263, 76%, 64%), /*Primary 60%*/
-  'light-violet': hsl(263, 71%, 79%), /*Primary 30%*/
-  'dark-grayish-blue': hsl(217, 42%, 45%), /*Primary 10%*/
-  'dark-blue-gray': hsl(219, 29%, 14%),
-  'white': hsl(0, 0%, 100%),
+  'dark-cyan': hsl(185, 75%, 39%),
+  /*Primary*/ 'dark-saturated-blue': hsl(229, 23%, 23%),
+  /*Primary*/ 'dark-grayish-blue': hsl(228, 17%, 66%),
+  /*Primary*/ 'dark-gray': hsl(219, 29%, 14%),
+  /*Neutral*/ 'white': hsl(0, 0%, 100%),
   'black': hsl(0, 0%, 0%),
-  'light-gray': hsl(0, 0%, 81%),
-  'light-grayish-blue': hsl(211, 42%, 84%),
 );
 
 // Function to retrieve colors
 @function color($color-name) {
   @return map-get($colors, $color-name);
 }
+
 // Typography Mixin with parameters
 @mixin typography($weight, $size, $line-height, $color) {
-  font-family: 'Barlow Semi Condensed', sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
   font-weight: $weight;
   font-size: $size;
   line-height: $line-height;
   color: $color;
 }
 
-// Base styles
+/* Query for mobiles 
+ html,
 body {
+  margin: 0;
+  padding: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 100vh; /* This ensures that the body takes the full viewport height 
+  background-color: var(--color-light-gray);
+
+
+main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: center; /* This centers the children of .mainContainer vertically along the main axis 
+  align-items: center; /* This centers the children of .mainContainer horizontally along the cross axis 
+  height: 95vh; /* This ensures that the body takes the full viewport height.The only way to centered vertically is to use this on main 
+  padding: 1rem;
+}  */
+
+// Base styles
+html,
+body {
+  height: 95vh; /* This ensures that the body takes the full viewport height.The only way to centered vertically is to use this */
+  background-image: url(../assets/images/bg-pattern-card.svg);
+  background-repeat: no-repeat;
+  background-size: 700%; /* enlarges the image by 25% */
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
-  background-color: color('light-grayish-blue');
-  //background-color: aqua; // for testing
-}
+  margin-top: 0px;
+  margin-bottom: 0px;
 
-main {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0rem;
+  background-color: color('light-grayish-blue');
+
+  // background-color: aqua; // for testing
 }
 
 // Container styles for mobiles
 .container {
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  align-items: center; /* This centers the children of .mainContainer horizontally along the cross axis */
   width: 100%;
+  height: 70vh; /* This ensures that the body takes the full viewport height.The only way to centered vertically is to use this 
+  margin: 0 auto; /* This centers the container horizontally */
+  padding: 1rem;
   margin-bottom: 2rem;
-  padding-top: 1rem;
   align-items: center;
-  padding: 20px;
-  // background-color: aqua;
+  // background-color: blueviolet;
 }
 
 // Card styling with nested classes for author section , colors and typography
 .card {
   width: 100%;
+  height: 500px;
   display: flex;
   flex-direction: column;
-  position: relative; // This allows for absolute positioning inside
+  align-items: center;
+  position: relative; // This allows for absolute positioning inside*/
   border-radius: 15px;
-  padding: 2rem 2rem 2rem 2rem;
   margin-bottom: 2rem;
-  z-index: 0;
   transition: transform 0.5s;
   cursor: pointer;
   box-shadow: 0 0 10px rgba(0 0 0 / 40%);
+  background-color: color('white');
+  // background-color: brown;
 
   &:hover {
     // Correct hover syntax using &
     transform: scale(1.05); // Scales the card by 5% on hover
   }
 
+  .bgTopImage {
+    border-radius: 10px;
+    background-image: url(../assets/images/bg-pattern-card.svg);
+    opacity: 0.7; /* Set the opacity to your desired level, e.g., 50% */
+    background-repeat: repeat;
+    width: 100%;
+    height: 42%;
+    background-position: center;
+    border-radius: 15px 15px 0px 0px;
+    background-size: cover;
+    margin-bottom: 1.5rem;
+  }
+
   // Define common styles for .photo under .author to ensure specificity
-  .author .photo {
-    width: 3.5rem;
-    height: 3.5rem;
+  .bgPhoto {
+    background-image: url(../assets/images/image-victor.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%; // Ensures the image is round
-    margin-right: 0.5rem;
-  }
-
-  // img {
-  //   display: block; // Remove any extra space below the image
-  //   // Set the width and height as needed
-  // }
-
-  &.quoteSymbol {
     position: absolute;
-    width: 200px;
-    margin-top: 0px; // Align to the top edge of the card
-    margin-left: 205px; // 10px from the right edge
-    transform: scaleY(1rem), scaleX(0.2); // Move it above the card
-    z-index: 1; // Under the text
-    // background-color: darkgreen;
+    margin-top: 150px;
+    transition: transform 1s ease; /* Adjust timing and easing to taste */
+    transform-origin: center; /* Ensures the rotation happens around the center */
+    border: 5px solid color('white');
+
+    &:hover {
+      // Correct hover syntax using &
+      transform: rotate(360deg); /* Completes a full circle */
+    }
   }
 
-  &.quote {
-    // position: relative;
-    margin-top: 10px;
-    z-index: 3;
+  .heading {
+    margin-top: 3rem;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 2rem;
     margin-bottom: 1rem;
+    // background-color: red;
   }
 
-  &.paragraph {
+  .title {
+    @include typography(700, 1.2rem, 1.5, color('dark-saturated-blue'));
+  }
+
+  span {
+    @include typography(700, 1.2rem, 1.5, color('dark-grayish-blue'));
+  }
+
+  .city {
+    @include typography(100, 1rem, 1.5, color('dark-grayish-blue'));
+  }
+
+  .socialData {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
     margin-bottom: 1rem;
-    z-index: 3;
+    // background-color: chocolate;
   }
 
-  &.bgDaniel {
-    background-image: url('../assets/images/bg-pattern-quotation+dark_purple.svg');
-    background-repeat: no-repeat;
-    background-position-x: 90%;
-    background-position-y: 0%;
-    background-size: 50%; // Width and height of the background image
-    background-color: color('moderate-violet');
-    .name,
-    .quote {
-      @include typography(600, '1.2rem', 1.5, color('white'));
-    }
-    .profession,
-    .paragraph {
-      @include typography(500, '1rem', 1.5, color('light-violet'));
-    }
-    .photo {
-      border: 4px solid color('light-violet');
-    }
+  .data {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  &.bgJonathan {
-    background-color: color('dark-grayish-blue');
-    background-image: url('../assets/images/bg-pattern-quotation+dark_gray.svg');
-    background-repeat: no-repeat;
-    background-position-x: 90%;
-    background-position-y: 0%;
-    background-size: 50%; // Width and height of the background image
-    .name,
-    .quote {
-      @include typography(600, '1.2rem', 1.5, color('white'));
-    }
-    .profession,
-    .paragraph {
-      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
-    }
-    .photo {
-      border: 4px solid color('light-grayish-blue');
-    }
+  h1 {
+    @include typography(700, 1.2rem, 1.5, color('dark-saturated-blue'));
   }
 
-  &.bgJeanette {
-    background-color: color('white');
-    background-image: url('../assets/images/bg-pattern-quotation+lighter_gray.svg');
-    background-repeat: no-repeat;
-    background-position-x: 90%;
-    background-position-y: 0%;
-    background-size: 50%; // Width and height of the background image
-    .name,
-    .quote {
-      @include typography(600, '1.2rem', 1.5, color('dark-grayish-blue'));
-    }
-    .profession,
-    .paragraph {
-      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
-    }
-    .photo {
-      border: 4px solid color('light-grayish-blue');
-    }
-  }
-
-  &.bgPatrick {
-    background-color: color('dark-blue-gray');
-    background-image: url('../assets/images/bg-pattern-quotation+blue_purple.svg');
-    background-repeat: no-repeat;
-    background-position-x: 90%;
-    background-position-y: 0%;
-    background-size: 50%; // Width and height of the background image
-    .name,
-    .quote {
-      @include typography(600, '1.2rem', 1.5, color('white'));
-    }
-    .profession,
-    .paragraph {
-      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
-    }
-    .photo {
-      border: 4px solid color('light-violet');
-    }
-  }
-
-  &.bgKira {
-    background-color: color('white');
-    background-image: url('../assets/images/bg-pattern-quotation+lighter_gray.svg');
-    background-repeat: no-repeat;
-    background-position-x: 90%;
-    background-position-y: 0%;
-    background-size: 50%; // Width and height of the background image
-    .name,
-    .quote {
-      @include typography(600, '1.2rem', 1.5, color('dark-grayish-blue'));
-    }
-    .profession,
-    .paragraph {
-      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
-    }
-    .photo {
-      border: 4px solid color('light-grayish-blue');
-    }
-  }
-
-  &.bgJonathan {
-    background-color: color('dark-grayish-blue');
-    .name,
-    .quote {
-      @include typography(600, '1.2rem', 1.5, color('white'));
-    }
-    .profession,
-    .paragraph {
-      @include typography(500, '1rem', 1.5, color('light-grayish-blue'));
-    }
+  h4 {
+    @include typography(400, 0.9rem, 1.5, color('dark-grayish-blue'));
   }
 }
 
@@ -245,54 +201,16 @@ main {
   margin-bottom: 2rem; /* Keeps the footer at the bottom but only after all other content */
 }
 .attribution a {
-  color: hsl(228, 45%, 44%);
+  color: white;
   text-decoration: none;
 }
 
 @media (min-width: 768px) {
+  // Container styles for mobiles
   .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); // Creates 4 equal columns
-    grid-gap: 20px; // Adjusting the gap between grid items
-    align-items: start; // Aligns items to the start of their cell
-    grid-auto-rows: minmax(250px, auto); // Ensures that rows are at least 250px tall
-    grid-gap: 20px; // Maintains a fixed gap
-    width: 80%;
-    padding: 20px;
-    margin-top: 30px;
-    align-items: stretch; // Stretches items to fill the grid row height
+    margin-top: 5rem;
   }
   .card {
-    min-height: 300px; // Sets a minimum height and allows expansion based on content
-    margin: 0rem;
-  }
-  // Card 1 (Daniel) takes the first row and spans two columns
-  .card:nth-child(1) {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-  }
-
-  // Card 2 (Jonathan) is placed in the first row, third column
-  .card:nth-child(2) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  // Card 3 (Jeanette) takes the second row, first column
-  .card:nth-child(3) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  // Card 4 (Patrick) starts at the second column and spans two columns in the second row
-  .card:nth-child(4) {
-    grid-column: 2 / span 2;
-    grid-row: 2;
-  }
-
-  // Card 5 (Kira) occupies the entire fourth column, and should align with Card 2's top
-  .card:nth-child(5) {
-    grid-column: 4;
-    grid-row: 1 / span 2;
+    width: 50%;
   }
 }
